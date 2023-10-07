@@ -19,7 +19,7 @@ using UnityEngine;
 public class PDDecks : BaseUnityPlugin
 {
     public static ManualLogSource LOGGER { get => instance.Logger; }
-    private const string ModID = "com.neo.rounds.TestMod";
+    private const string ModID = "com.neo.rounds.PaydayDecks";
     private const string ModName = "Payday 2 Perk Cards";
     private const string Version = "1.0.3";
     public const string ModInitials = "Payday";
