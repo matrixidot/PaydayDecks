@@ -21,7 +21,7 @@ public class PDDecks : BaseUnityPlugin
     public static ManualLogSource LOGGER { get => instance.Logger; }
     private const string ModID = "com.neo.rounds.PaydayDecks";
     private const string ModName = "Payday 2 Perk Cards";
-    private const string Version = "1.0.3";
+    private const string Version = "1.0.4";
     public const string ModInitials = "Payday";
     public static PDDecks instance { get; private set; }
     
