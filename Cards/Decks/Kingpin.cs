@@ -13,7 +13,7 @@ public class Kingpin : CustomEffectCard<KingpinEffect>
     {
         Title = "Kingpin",
         Description = "On block: Inject yourself with goods.\n" +
-                      "While Injecting: Heal for 100% of damage taken. Lasts 15s",
+                      "While Injecting: Heal for 99% of damage taken. Lasts 10s",
         ModName = $"{PDDecks.ModInitials}",
         Rarity = RarityUtils.GetRarity("Deck"),
         Theme = CardThemeColor.CardThemeColorType.DefensiveBlue,
@@ -24,12 +24,14 @@ public class Kingpin : CustomEffectCard<KingpinEffect>
                 positive = true,
                 stat = "Health",
                 amount = "2x",
+                simepleAmount = CardInfoStat.SimpleAmount.aLotOf,
             },
             new CardInfoStat
             {
                 positive = true,
                 stat = "Damage",
-                amount = "1.3x",
+                amount = "+20%",
+                simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf,
             },
             new CardInfoStat
             {
@@ -51,7 +53,7 @@ public class Kingpin : CustomEffectCard<KingpinEffect>
         cardInfo.allowMultiple = false;
         cardInfo.categories = new[] { CustomCardCategories.instance.CardCategory("Kingpin") };
         cardInfo.blacklistedCategories = new[] { CustomCardCategories.instance.CardCategory("Stoic"), CustomCardCategories.instance.CardCategory("Syphon") };
-        gun.damage = 1.3f;
+        gun.damage = 1.2f;
     }
 
     protected override void Added(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -78,6 +80,6 @@ public class KingpinEffect : AbilityEffect
     public override void OnTakeDamage(Vector2 damage, bool selfDamage)
     {
         if (IsActive() && data.stats.GetAdditionalData().kingpinActive)
-            data.healthHandler.Heal(damage.magnitude);
+            data.healthHandler.Heal(damage.magnitude * 0.99f);
     }
 }

@@ -17,7 +17,8 @@ public class Parkour : SimpleCard
             {
                 positive = true,
                 stat = "Movement Speed",
-                amount = "1.1x",
+                amount = "+10%",
+                simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf,
             },
             new CardInfoStat
             {
@@ -27,9 +28,14 @@ public class Parkour : SimpleCard
             },
         },
     };
+
+    public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
+    {
+        statModifiers.movementSpeed = 1.1f;
+    }
+
     protected override void Added(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
     {
-        characterStats.movementSpeed = 1.25f;
-        characterStats.numberOfJumps = 1;
+        statModifiers.numberOfJumps += 1;
     }
 }

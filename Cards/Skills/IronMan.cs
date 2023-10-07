@@ -18,12 +18,14 @@ public class IronMan : SimpleCard
                 positive = true,
                 stat = "Block Cooldown",
                 amount = "-20%",
+                simepleAmount = CardInfoStat.SimpleAmount.slightlyLower,
             },
             new CardInfoStat
             {
                 positive = true,
                 stat = "Health",
                 amount = "1.5x",
+                simepleAmount = CardInfoStat.SimpleAmount.aLotOf,
             },
         },
     };

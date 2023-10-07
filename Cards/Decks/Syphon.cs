@@ -25,18 +25,19 @@ public class Syphon : CustomEffectCard<SyphonEffect>
                 positive = true,
                 stat = "Health",
                 amount = "1.75x",
+                simepleAmount = CardInfoStat.SimpleAmount.aLotOf,
+            },            
+            new CardInfoStat {
+            positive = false,
+            stat = "Mobility at 0 HP",
+            amount = "-50%",
+            simepleAmount = CardInfoStat.SimpleAmount.aLotLower,
             },
             new CardInfoStat
             {
                 positive = true,
                 stat = "Ability Duration",
                 amount = "10s",
-            },
-            new CardInfoStat
-            {
-                positive = false,
-                stat = "Mobility at 0 HP",
-                amount = "Way less",
             },
             new CardInfoStat
             {
@@ -68,18 +69,15 @@ public class SyphonEffect : AbilityEffect
     private int hitsLanded = 0;
     private float origMoveSpeed;
     private float origJumpHeight;
-
-
-
-
+    
     private void FixedUpdate()
     {
         if (!IsActive())
             return;
         if (data.health <= 0.1f)
         {
-            characterStats.jump = 0.6f;
-            characterStats.movementSpeed = 0.4f;
+            characterStats.jump = 0.5f;
+            characterStats.movementSpeed = 0.5f;
         }
     }
     protected override void StartAbility()

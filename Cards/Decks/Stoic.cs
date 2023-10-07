@@ -23,18 +23,20 @@ public class Stoic : CustomEffectCard<StoicEffect>
                 positive = true,
                 stat = "Health",
                 amount = "2x",
+                simepleAmount = CardInfoStat.SimpleAmount.aLotOf,
+            },
+            new CardInfoStat
+            {
+                positive = true,
+                stat = "DoT Kickback",
+                amount = "50%",
+                simepleAmount = CardInfoStat.SimpleAmount.Some,
             },
             new CardInfoStat
             {
                 positive = true,
                 stat = "Damage Taken Over",
                 amount = "12s"
-            },
-            new CardInfoStat
-            {
-                positive = true,
-                stat = "DoT Kickback",
-                amount = "50%"
             },
             new CardInfoStat
             {

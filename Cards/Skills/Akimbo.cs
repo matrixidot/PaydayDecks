@@ -30,7 +30,7 @@ public class Akimbo : SimpleCard
 
     public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
     {
-        gun.numberOfProjectiles = 2;
+        gun.numberOfProjectiles = 1;
     }
 
     protected override void Added(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)

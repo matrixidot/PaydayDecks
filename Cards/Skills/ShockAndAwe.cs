@@ -17,7 +17,8 @@ public class ShockAndAwe : SimpleCard
             {
                 positive = true,
                 stat = "Block Cooldown",
-                amount = "0.75x",
+                amount = "-25%",
+                simepleAmount = CardInfoStat.SimpleAmount.lower,
             },
             new CardInfoStat
             {
@@ -28,8 +29,9 @@ public class ShockAndAwe : SimpleCard
             new CardInfoStat
             {
                 positive = true,
-                stat = "Slow Bullets",
-                amount = "0.1x",
+                stat = "Bullet Slow",
+                amount = "+20%",
+                simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf,
             },
         },
     };
@@ -38,6 +40,6 @@ public class ShockAndAwe : SimpleCard
     {
         block.cdMultiplier = 0.75f;
         block.additionalBlocks = 1;
-        gun.slow = 0.1f;
+        gun.slow = 0.20f;
     }
 }

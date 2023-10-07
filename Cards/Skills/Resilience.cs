@@ -9,7 +9,7 @@ public class Resilience : SimpleCard
         Title = "Resilience",
         Description = "Hehe block go brrrrrrr",
         ModName = $"{PDDecks.ModInitials}",
-        Rarity = CardInfo.Rarity.Uncommon,
+        Rarity = CardInfo.Rarity.Common,
         Theme = CardThemeColor.CardThemeColorType.DefensiveBlue,
         Stats = new []
         {
@@ -17,13 +17,14 @@ public class Resilience : SimpleCard
             {
                 positive = true,
                 stat = "Block Cooldown",
-                amount = "0.85x",
+                amount = "-10%",
+                simepleAmount = CardInfoStat.SimpleAmount.slightlyLower,
             },
         },
     };
 
     public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
     {
-        block.cdMultiplier = 0.85f;
+        block.cdMultiplier = 0.9f;
     }
 }

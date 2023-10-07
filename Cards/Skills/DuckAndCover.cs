@@ -17,12 +17,14 @@ public class DuckAndCover : SimpleCard
             {
                 positive = true,
                 stat = "Movement Speed",
-                amount = "1.25x",
+                amount = "+25%",
+                simepleAmount = CardInfoStat.SimpleAmount.Some,
             },
         },
     };
-    protected override void Added(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
+
+    public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
     {
-        characterStats.movementSpeed = 1.25f;
+        statModifiers.movementSpeed = 1.25f;
     }
 }
