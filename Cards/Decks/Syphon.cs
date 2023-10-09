@@ -25,13 +25,6 @@ public class Syphon : CustomEffectCard<SyphonEffect>
                 positive = true,
                 stat = "Health",
                 amount = "1.75x",
-                simepleAmount = CardInfoStat.SimpleAmount.aLotOf,
-            },            
-            new CardInfoStat {
-            positive = false,
-            stat = "Mobility at 0 HP",
-            amount = "-50%",
-            simepleAmount = CardInfoStat.SimpleAmount.aLotLower,
             },
             new CardInfoStat
             {
@@ -43,7 +36,7 @@ public class Syphon : CustomEffectCard<SyphonEffect>
             {
                 positive = false,
                 stat = "Ability Cooldown",
-                amount = "20s",
+                amount = "25s",
             },
         },
     };
@@ -52,6 +45,8 @@ public class Syphon : CustomEffectCard<SyphonEffect>
     {
         cardInfo.allowMultiple = false;
         cardInfo.categories = new[] { CustomCardCategories.instance.CardCategory("Syphon") };
+        cardInfo.blacklistedCategories = new[] { CustomCardCategories.instance.CardCategory("Stoic") };
+
     }
 
     protected override void Added(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
@@ -62,43 +57,21 @@ public class Syphon : CustomEffectCard<SyphonEffect>
 
 public class SyphonEffect : AbilityEffect
 {
-    public override float cooldown => 20f;
+    public override float cooldown => 35f; // Starts counting immediately after used
 
     public override float duration => 10f;
     
     private int hitsLanded = 0;
-    private float origMoveSpeed;
-    private float origJumpHeight;
-    
-    private void FixedUpdate()
-    {
-        if (!IsActive())
-            return;
-        if (data.health <= 0.1f)
-        {
-            characterStats.jump = 0.5f;
-            characterStats.movementSpeed = 0.5f;
-        }
-    }
     protected override void StartAbility()
     {
         data.healthHandler.HealPercent(data.maxHealth, 40f);
         data.stats.GetAdditionalData().syphoning = true;
-        origMoveSpeed = characterStats.movementSpeed;
-        origJumpHeight = characterStats.jump;
     }
 
     protected override void EndAbility()
     {
-        ResetStats();
         data.stats.GetAdditionalData().syphoning = false;
         hitsLanded = 0;
-    }
-
-    protected override void ResetStats()
-    {
-        data.stats.movementSpeed = origMoveSpeed;
-        data.stats.jump = origJumpHeight;
     }
 
     public override void OnDealtDamage(Vector2 damage, bool selfDamage)
@@ -111,8 +84,7 @@ public class SyphonEffect : AbilityEffect
         hitsLanded++;
         if (hitsLanded % 2 == 0)
         {
-            data.healthHandler.HealPercent(data.maxHealth, 100f);
-            data.block.CallDoBlock(true, true, BlockTrigger.BlockTriggerType.None);
+            data.healthHandler.HealPercent(data.maxHealth, 10f);
         }
     }
 }

@@ -6,8 +6,8 @@ public class Akimbo : SimpleCard
 {
     public override CardDetails Details => new()
     {
-        Title = "Akimbo",
-        Description = "Fire 2 times at once... Not because of TRAINING, you just have 2 guns now.",
+        Title = "Akimbo?",
+        Description = "Fire once more each time... Not because of training, you just have an extra gun.",
         ModName = $"{PDDecks.ModInitials}",
         Rarity = CardInfo.Rarity.Rare,
         Theme = CardThemeColor.CardThemeColorType.FirepowerYellow,
@@ -25,12 +25,19 @@ public class Akimbo : SimpleCard
                 stat = "Bullets",
                 amount = "+1",
             },
+            new CardInfoStat
+            {
+                positive = false,
+                stat = "Reload Speed",
+                amount = "+50%",
+            },
         },
     };
 
     public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
     {
         gun.numberOfProjectiles = 1;
+        gun.reloadTime = 1.5f;
     }
 
     protected override void Added(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)

@@ -7,11 +7,11 @@ using System.Runtime.CompilerServices;
 public class CharacterStatModifiersAdditionalData
 {
     public bool syphoning;
-    public bool kingpinActive;
+    public bool retaliating;
     public CharacterStatModifiersAdditionalData()
     {
         syphoning = false;
-        kingpinActive = false;
+        retaliating = false;
     }
 }
 public static class CharacterStatModifiersExtension

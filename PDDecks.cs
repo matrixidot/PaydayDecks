@@ -21,7 +21,7 @@ public class PDDecks : BaseUnityPlugin
     public static ManualLogSource LOGGER { get => instance.Logger; }
     private const string ModID = "com.neo.rounds.PaydayDecks";
     private const string ModName = "Payday 2 Perk Cards";
-    private const string Version = "1.0.4";
+    private const string Version = "1.1.0";
     public const string ModInitials = "Payday";
     public static PDDecks instance { get; private set; }
     
@@ -33,18 +33,17 @@ public class PDDecks : BaseUnityPlugin
         //Assets.OnFinishedLoadingAssets += OnAssetsLoaded;
         var harmony = new Harmony(ModID);
         harmony.PatchAll();
-        RarityUtils.AddRarity("Deck", 0.02f, new Color(1, 0, 1), new Color(0.8f, 0, 0.8f));
+        RarityUtils.AddRarity("Deck", 0.08f, new Color(1,1,1), new Color(1,1,1));
     }
     void Start()
     {
         CustomCard.BuildCard<Syphon>();
-        CustomCard.BuildCard<Kingpin>();
         CustomCard.BuildCard<Stoic>();
         CustomCard.BuildCard<Akimbo>();
         CustomCard.BuildCard<DuckAndCover>();
         CustomCard.BuildCard<FullyLoaded>();
         CustomCard.BuildCard<IronMan>();
-        CustomCard.BuildCard<NineLives>();
+        CustomCard.BuildCard<AnotherLife>();
         CustomCard.BuildCard<Parkour>();
         CustomCard.BuildCard<Resilience>();
         CustomCard.BuildCard<ShockAndAwe>();

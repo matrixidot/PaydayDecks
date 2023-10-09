@@ -16,11 +16,23 @@ public class FullyLoaded : SimpleCard
             new CardInfoStat
             {
                 positive = true,
-                stat = "AMMO",
+                stat = "Max AMMO",
                 amount = "2x",
+            },
+            new CardInfoStat
+            {
+                positive = false,
+                stat = "Reload Speed",
+                amount = "+75%",
             },
         },
     };
+
+    public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
+    {
+        gun.reloadTime = 1.75f;
+    }
+
     protected override void Added(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
     {
         gunAmmo.maxAmmo *= 2;

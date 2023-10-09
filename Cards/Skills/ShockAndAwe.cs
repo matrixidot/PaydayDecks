@@ -7,7 +7,7 @@ public class ShockAndAwe : SimpleCard
     public override CardDetails Details => new()
     {
         Title = "Shock And Awe",
-        Description = "Gain blocks faster and block an extra time because of improvements to shield tech. Bullets also slow enemies because they are cool.",
+        Description = "Block improved, bullets also feel cold for some reason.",
         ModName = $"{PDDecks.ModInitials}",
         Rarity = CardInfo.Rarity.Rare,
         Theme = CardThemeColor.CardThemeColorType.DefensiveBlue,
@@ -18,7 +18,6 @@ public class ShockAndAwe : SimpleCard
                 positive = true,
                 stat = "Block Cooldown",
                 amount = "-25%",
-                simepleAmount = CardInfoStat.SimpleAmount.lower,
             },
             new CardInfoStat
             {
@@ -31,7 +30,12 @@ public class ShockAndAwe : SimpleCard
                 positive = true,
                 stat = "Bullet Slow",
                 amount = "+20%",
-                simepleAmount = CardInfoStat.SimpleAmount.aLittleBitOf,
+            },
+            new CardInfoStat
+            {
+                positive = false,
+                stat = "Reload Speed",
+                amount = "-20%",
             },
         },
     };
@@ -41,5 +45,6 @@ public class ShockAndAwe : SimpleCard
         block.cdMultiplier = 0.75f;
         block.additionalBlocks = 1;
         gun.slow = 0.20f;
+        gun.reloadTime = 1.2f;
     }
 }

@@ -2,12 +2,12 @@
 
 using ModsPlus;
 
-public class NineLives : SimpleCard
+public class AnotherLife : SimpleCard
 {
     public override CardDetails Details => new()
     {
-        Title = "\"Nine Lives\"",
-        Description = "Come back after dying because of TRAINING",
+        Title = "Another Life",
+        Description = "Come back after dying. Because training.",
         ModName = $"{PDDecks.ModInitials}",
         Rarity = CardInfo.Rarity.Rare,
         Theme = CardThemeColor.CardThemeColorType.MagicPink,
@@ -24,14 +24,12 @@ public class NineLives : SimpleCard
                 positive = false,
                 stat = "Health",
                 amount = "0.5x",
-                simepleAmount = CardInfoStat.SimpleAmount.lower,
             },
             new CardInfoStat
             {
                 positive = false,
                 stat = "Movement Speed",
                 amount = "-20%",
-                simepleAmount = CardInfoStat.SimpleAmount.slightlyLower,
             },
         },
     };

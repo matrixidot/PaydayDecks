@@ -7,7 +7,7 @@ public class Parkour : SimpleCard
     public override CardDetails Details => new()
     {
         Title = "Parkour",
-        Description = "Move faster and double-jump because of TRAINING",
+        Description = "Move faster and double-jump because of training",
         ModName = $"{PDDecks.ModInitials}",
         Rarity = CardInfo.Rarity.Common,
         Theme = CardThemeColor.CardThemeColorType.MagicPink,

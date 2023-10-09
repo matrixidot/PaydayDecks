@@ -9,6 +9,6 @@ public class CharacterStatModifierPatchResetStats
     private static void Prefix(CharacterStatModifiers __instance)
     {
         __instance.GetAdditionalData().syphoning = false;
-        __instance.GetAdditionalData().kingpinActive = false;
+        __instance.GetAdditionalData().retaliating = false;
     }  
 }

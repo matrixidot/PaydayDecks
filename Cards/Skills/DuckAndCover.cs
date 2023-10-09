@@ -7,7 +7,7 @@ public class DuckAndCover : SimpleCard
     public override CardDetails Details => new()
     {
         Title = "Duck And Cover",
-        Description = "You move faster because of TRAINING.",
+        Description = "You move faster because of training.",
         ModName = $"{PDDecks.ModInitials}",
         Rarity = CardInfo.Rarity.Common,
         Theme = CardThemeColor.CardThemeColorType.MagicPink,
@@ -18,7 +18,6 @@ public class DuckAndCover : SimpleCard
                 positive = true,
                 stat = "Movement Speed",
                 amount = "+25%",
-                simepleAmount = CardInfoStat.SimpleAmount.Some,
             },
         },
     };

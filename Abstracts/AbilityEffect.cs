@@ -1,7 +1,10 @@
 ﻿namespace PaydayDecks.Abstracts;
 
+using ModdingUtils.MonoBehaviours;
 using ModsPlus;
 using System.Collections;
+using System.Net.Mime;
+using TMPro;
 using UnboundLib.GameModes;
 using UnityEngine;
 
@@ -13,8 +16,8 @@ public abstract class AbilityEffect : CardEffect
     private bool canUse = true;
     private bool active = false;
 
-
     public bool IsActive() => active;
+
     private void Update()
     {
         if (!canUse)
@@ -27,12 +30,11 @@ public abstract class AbilityEffect : CardEffect
                 active = false;
                 EndAbility();
             }
-                
     }
 
     protected override void OnDestroy()
     {
-        ResetStats();
+        Reset();
         base.OnDestroy();
     }
 
@@ -57,14 +59,15 @@ public abstract class AbilityEffect : CardEffect
     protected virtual void EndAbility()
     { }
 
-    protected virtual void ResetStats()
+    protected virtual void Reset()
     { }
 
     public override IEnumerator OnBattleStart(IGameModeHandler gameModeHandler)
     {
         canUse = true;
         active = false;
-        ResetStats();
+        lastUsed = 0f;
+        Reset();
         yield break;
     }
     
